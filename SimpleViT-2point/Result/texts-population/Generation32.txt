@@ -1,0 +1,40 @@
+Transformers1:
+  Chromosome: [(512, 1), (1, 128), (2, 256)]
+  Parameters: 741866.0
+  Accuracy: 56.48
+
+Transformers2:
+  Chromosome: [(512, 1), (8, 4096), (256, 1024), (1, 2048), (512, 256), (4, 2048), (16, 4), (1, 128), (8, 4096)]
+  Parameters: 10004970.0
+  Accuracy: 67.99
+
+Transformers3:
+  Chromosome: [(512, 1), (256, 8), (2, 256)]
+  Parameters: 1266282.0
+  Accuracy: 60.33
+
+Transformers4:
+  Chromosome: [(512, 1024), (8, 512), (256, 8), (1, 2)]
+  Parameters: 2776682.0
+  Accuracy: 65.23
+
+Transformers5:
+  Chromosome: [(512, 1), (1, 2048), (8, 256)]
+  Parameters: 2120042.0
+  Accuracy: 62.73
+
+Transformers6:
+  Chromosome: [(512, 1024), (2048, 256), (1, 2048), (16, 8), (1, 1024), (1, 2)]
+  Parameters: 4354922.0
+  Accuracy: 67.36
+
+Transformers7:
+  Chromosome: [(512, 1), (4, 512), (256, 1024), (1, 2048), (512, 256), (4, 2048), (16, 4), (1, 128), (8, 4096)]
+  Parameters: 7904234.0
+  Accuracy: 67.9
+
+Transformers8:
+  Chromosome: [(512, 1), (2048, 256), (1, 2048), (16, 8), (1, 1024), (2048, 256), (512, 256), (4, 2048), (16, 4), (256, 4)]
+  Parameters: 6131562.0
+  Accuracy: 67.49
+
