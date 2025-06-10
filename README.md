@@ -19,7 +19,7 @@ The project consists of two variants of ViT architecture search using NSGA-II:
 
 Both folders share the same structure, differing only in `crossover.py`.
 
-SimpleViT-*/ # Shared folder structure between both versions
+'''SimpleViT-*/ # Shared folder structure between both versions
 ├── main.py # Entry point for running the NSGA-II optimization loop
 ├── crossover.py # Implements the crossover strategy (differs per version)
 ├── mutation.py # Mutation logic for modifying chromosomes
@@ -29,4 +29,4 @@ SimpleViT-*/ # Shared folder structure between both versions
 ├── simplevit_model.py # Definition of the SimpleViT model architecture
 ├── save_population.py # Saves chromosome, accuracy, and model size for each generation
 ├── save_fronts.py # Extracts and stores Pareto fronts for analysis
-├── Result/ # Output folder containing Generation files and result plots
+├── Result/ # Output folder containing Generation files and result plots'''
