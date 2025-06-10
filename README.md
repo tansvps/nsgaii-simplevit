@@ -39,6 +39,6 @@ SimpleViT-*/             # Shared folder structure between both versions
 - Number of generations: 64  
 - Crossover rate: 0.8  
 - Mutation rate: 0.1  
-- Dataset: CIFAR-10 (manually downloaded)  
+- Dataset: CIFAR-10
 - Epochs per model: 32  
 
