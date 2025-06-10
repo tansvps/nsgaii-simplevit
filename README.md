@@ -33,12 +33,20 @@ SimpleViT-*/             # Shared folder structure between both versions
 ├── Result/              # Output folder containing Generation files and result plots
 ```
 
-## ⚙️ Configuration
+## ⚙️ Configuration for NSGA-II Search
 
 - Population size: 8  
 - Number of generations: 64  
 - Crossover rate: 0.8  
 - Mutation rate: 0.1  
-- Dataset: CIFAR-10
-- Epochs per model: 32  
+- Dataset: CIFAR-10  
+- Epochs per individual: 32  
 
+## 🧪 Training Configuration (Search Stage)
+
+The following training hyperparameters were applied when evaluating each ViT candidate during the search process:
+
+- Epochs: 32  
+- Learning rate: 3e-5  
+- Dropout: 0.1  
+- Weight decay: 0.001
