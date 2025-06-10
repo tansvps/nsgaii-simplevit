@@ -19,31 +19,16 @@ The project consists of two variants of ViT architecture search using NSGA-II:
 
 Both folders share the same structure, differing only in `crossover.py`.
 
-SimpleViT-*/ # Shared folder structure between both versions
-├── main.py # Entry point for running the NSGA-II optimization loop
-├── crossover.py # Implements the crossover strategy (differs per version)
-├── mutation.py # Mutation logic for modifying chromosomes
-├── nsgaii.py # Core NSGA-II workflow (sorting, selection, reproduction)
-├── population.py # Population initialization and evolution logic
-├── train_eval.py # Training and evaluation of generated ViT architectures
-├── simplevit_model.py # Definition of the SimpleViT model architecture
-├── save_population.py # Saves chromosome, accuracy, and model size for each generation
-├── save_fronts.py # Extracts and stores Pareto fronts for analysis
-├── Result/ # Output folder containing Generation files and result plots
-
-
-```text SimpleViT-*/ # Shared folder structure between both versions ├── main.py # Entry point for running the NSGA-II optimization loop ├── crossover.py # Implements the crossover strategy (differs per version) ├── mutation.py # Mutation logic for modifying chromosomes ├── nsgaii.py # Core NSGA-II workflow (sorting, selection, reproduction) ├── population.py # Population initialization and evolution logic ├── train_eval.py # Training and evaluation of generated ViT architectures ├── simplevit_model.py # Definition of the SimpleViT model architecture ├── save_population.py # Saves chromosome, accuracy, and model size for each generation ├── save_fronts.py # Extracts and stores Pareto fronts for analysis ├── Result/ # Output folder containing Generation files and result plots ```
-
 ```text
-SimpleViT-*/                      # Shared folder structure between both versions
-├── main.py                      # Entry point for running the NSGA-II optimization loop
-├── crossover.py                 # Implements the crossover strategy (differs per version)
-├── mutation.py                  # Mutation logic for modifying chromosomes
-├── nsgaii.py                    # Core NSGA-II workflow (sorting, selection, reproduction)
-├── population.py                # Population initialization and evolution logic
-├── train_eval.py                # Training and evaluation of generated ViT architectures
-├── simplevit_model.py           # Definition of the SimpleViT model architecture
-├── save_population.py           # Saves chromosome, accuracy, and model size for each generation
-├── save_fronts.py               # Extracts and stores Pareto fronts for analysis
-├── Result/                      # Output folder containing Generation files and result plots
+SimpleViT-*/             # Shared folder structure between both versions
+├── main.py              # Entry point for running the NSGA-II optimization loop
+├── crossover.py         # Implements the crossover strategy (differs per version)
+├── mutation.py          # Mutation logic for modifying chromosomes
+├── nsgaii.py            # Core NSGA-II workflow (sorting, selection, reproduction)
+├── population.py        # Population initialization and evolution logic
+├── train_eval.py        # Training and evaluation of generated ViT architectures
+├── simplevit_model.py   # Definition of the SimpleViT model architecture
+├── save_population.py   # Saves chromosome, accuracy, and model size for each generation
+├── save_fronts.py       # Extracts and stores Pareto fronts for analysis
+├── Result/              # Output folder containing Generation files and result plots
 ```
