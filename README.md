@@ -32,3 +32,13 @@ SimpleViT-*/             # Shared folder structure between both versions
 ├── save_fronts.py       # Extracts and stores Pareto fronts for analysis
 ├── Result/              # Output folder containing Generation files and result plots
 ```
+
+## ⚙️ Configuration
+
+- Population size: 8  
+- Number of generations: 64  
+- Crossover rate: 0.8  
+- Mutation rate: 0.1  
+- Dataset: CIFAR-10 (manually downloaded)  
+- Epochs per model: 32  
+
