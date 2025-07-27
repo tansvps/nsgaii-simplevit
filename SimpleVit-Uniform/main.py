@@ -17,6 +17,7 @@ from train_test_V8 import Train
 import numpy as np
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 os.makedirs('data', exist_ok=True)
+
 ########################################
 batch_size = 128
 print("bz_:",batch_size)
@@ -39,6 +40,7 @@ train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=
 valid_loader = DataLoader(dataset=valid_dataset, batch_size=batch_size, shuffle=True,pin_memory=True,num_workers=2)
 # test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False,pin_memory=True,num_workers=2)
 ######################################
+
 latest_pops_ = []
 num_generations = 65
 init_pops = 8
@@ -48,6 +50,7 @@ parameter = []
 all_acc = []
 all_param = []
 transformer_types = []
+
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         print("Running the program without command line arguments")
@@ -84,13 +87,9 @@ if __name__ == "__main__":
                         type_tr = 'Transformer_FA'
                         type_transfm.append(type_tr)
 
-            # print("chormosome:", geno_m)
-            # print("type_transfm:", type_transfm, len(type_transfm))
-            # transformers_types.append(type_transfm[:])
             transformers_types.append(type_transfm.copy())
             type_transfm.clear()
 
-# for generation in range(num_generations):
 for generation in range(start_generation,num_generations):
     if file_path == f'output_generation{generation-1}.txt':
         print("continue...")
@@ -134,7 +133,6 @@ for generation in range(start_generation,num_generations):
         print("\n--Crossover and Mutation Process--")
         crossover_instance = Crossover()
         child = crossover_instance.pair(chrom_tuple)
-        # print("Child:",child)
 
         for k, i in enumerate(child):
             print(f"\nIndividual {str(k + 1)} / {str(len(child))}")
@@ -190,7 +188,6 @@ for generation in range(start_generation,num_generations):
         crowding_metrics, sorted_front, all_fitnesses = selected.calculate_crowding_metrics(fronts)
         nondomination_rank_dict = selected.fronts_to_nondomination_rank()
         sorted_indicies = selected.nondominated_sort(nondomination_rank_dict, crowding_metrics)
-        # print("sorted_indicies:",sorted_indicies)
         fitness, geno_nextgen = selected.Selected()
         print("\nChromosome_nextgeneration:",geno_nextgen, len(geno_nextgen))
 
@@ -233,7 +230,6 @@ for generation in range(start_generation,num_generations):
         file_latest_pops = latest_pops
         print("Accuracy_nextgen:",file_ac)
         print("Parameter_nextgen:",file_pr)
-        # #
     
         print(f"Saving files for Generation {generation}...")
         with open(f'output_generation{generation}.txt', 'w') as file:
@@ -326,27 +322,18 @@ for generation in range(start_generation,num_generations):
 
         ##########################################################
 
-        # print("\nAccuracy:", acc_test, len(acc_test))
-        # print("Parameter:", parameter, len(parameter))
         list_genotype = latest_pops + list_mutate
-        # print("list_genotype:", list_genotype) #old+new
-        # print(len(list_genotype))
 
         ##NSGAII####
         selected = Selection_NSGAII(list_genotype, acc_test, parameter)
 
         acc_param, fitnesses_keep_acc, fitnesses_keep_param = selected.normolize()
         chromosome_nodes, Transfomer, genotype_list, all_fitnesses = selected.param()
-        # print("\nchromosome_nodes:", chromosome_nodes)
-        # print("Transfomer:", Transfomer)
-        # print("genotype_str:", genotype_list)
-        # print("all_fitnesses:", all_fitnesses)
 
         fronts = selected.calculate_pareto_fronts()
         crowding_metrics, sorted_front, all_fitnesses = selected.calculate_crowding_metrics(fronts)
         nondomination_rank_dict = selected.fronts_to_nondomination_rank()
         sorted_indicies = selected.nondominated_sort(nondomination_rank_dict, crowding_metrics)
-        # print("sorted_indicies", sorted_indicies)
         fitness, geno_nextgen = selected.Selected()
         print("\nChromosome_nextgeneration:", geno_nextgen, len(geno_nextgen))
 
@@ -389,12 +376,6 @@ for generation in range(start_generation,num_generations):
         file_latest_pops = latest_pops
         print("Accuracy_nextgen:",file_ac)
         print("Parameter_nextgen:",file_pr)
-
-        # with open('latest_generation.txt', 'w') as file:
-        #     file.write(f"Generation: {generation}\n")
-        #     file.write(str(latest_pops) + '\n')
-        #     file.write(str(file_ac) + '\n')
-        #     file.write(str(file_pr) + '\n')
 
         if generation % 8 == 0:
             print(f"Saving files for Generation {generation}...")
