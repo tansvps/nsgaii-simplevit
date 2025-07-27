@@ -14,6 +14,7 @@ from save_population import Savefile
 from save_fronts import Savefileplot
 from train_eval import Train
 import numpy as np
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 os.makedirs('data', exist_ok=True)
 ########################################
@@ -32,11 +33,12 @@ transform = transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.5,
 
 train_dataset = datasets.CIFAR10(root='data', train=True, download=True, transform=transform_train)
 valid_dataset = datasets.CIFAR10(root='data', train=False, download=True, transform=transform)
-# test_dataset = datasets.CIFAR10(root='data', train=False, download=True, transform=transform)
+test_dataset = datasets.CIFAR10(root='data', train=False, download=True, transform=transform)
 
 train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True,pin_memory=True,num_workers=2)
 valid_loader = DataLoader(dataset=valid_dataset, batch_size=batch_size, shuffle=True,pin_memory=True,num_workers=2)
-# test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False,pin_memory=True,num_workers=2)
+test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False,pin_memory=True,num_workers=2)
+
 ######################################
 latest_pops_ = []
 num_generations = 65
@@ -47,6 +49,7 @@ parameter = []
 all_acc = []
 all_param = []
 transformer_types = []
+
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         print("Running the program without command line arguments")
@@ -327,17 +330,13 @@ for generation in range(start_generation,num_generations):
         # print("Parameter:", parameter, len(parameter))
         list_genotype = latest_pops + list_mutate
         # print("list_genotype:", list_genotype) #old+new
-        # print(len(list_genotype))
 
         ##NSGAII####
         selected = Selection_NSGAII(list_genotype, acc_test, parameter)
 
         acc_param, fitnesses_keep_acc, fitnesses_keep_param = selected.normolize()
         chromosome_nodes, Transfomer, genotype_list, all_fitnesses = selected.param()
-        # print("\nchromosome_nodes:", chromosome_nodes)
-        # print("Transfomer:", Transfomer)
-        # print("genotype_str:", genotype_list)
-        # print("all_fitnesses:", all_fitnesses)
+
 
         fronts = selected.calculate_pareto_fronts()
         crowding_metrics, sorted_front, all_fitnesses = selected.calculate_crowding_metrics(fronts)
@@ -387,11 +386,6 @@ for generation in range(start_generation,num_generations):
         print("Accuracy_nextgen:",file_ac)
         print("Parameter_nextgen:",file_pr)
 
-        # with open('latest_generation.txt', 'w') as file:
-        #     file.write(f"Generation: {generation}\n")
-        #     file.write(str(latest_pops) + '\n')
-        #     file.write(str(file_ac) + '\n')
-        #     file.write(str(file_pr) + '\n')
 
         if generation % 8 == 0:
             print(f"Saving files for Generation {generation}...")
